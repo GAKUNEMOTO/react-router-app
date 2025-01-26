@@ -8,7 +8,7 @@ import { Article } from "~/domain/Article";
 export async function loader({ params }: Route.LoaderArgs) {
   const res = await fetch(`https://qiita.com/api/v2/authenticated_user/items`, {
     headers: {
-      Authorization: `Bearer eb905f883c7279ad1a7f369307d0cd413bc1a1f1`,
+      Authorization: `Bearer ${process.env.QIITA_ACCESS_TOKEN}`,
     },
   });
   const articlesJson: ArticleJson[] = await res.json();
